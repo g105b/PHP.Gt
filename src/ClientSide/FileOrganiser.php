@@ -129,8 +129,8 @@ public function purgeStaticWwwFiles() {
 		$filename = $item->getFilename();
 
 		if($filename === $assetDirName
-		|| strpos($filename, $scriptDirName . "-") === 0
-		|| strpos($filename, $styleDirName . "-") === 0) {
+		|| strpos(strtolower($filename), strtolower($scriptDirName) . "-") === 0
+		|| strpos(strtolower($filename), strtolower($styleDirName) . "-") === 0) {
 			DirectoryRecursor::purge($item->getPathname());
 		}
 	}
