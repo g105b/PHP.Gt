@@ -22,7 +22,7 @@
 
 	"require": {
 		"symfony/css-selector": "2.3.28",
-		"symfony/console": "2.5.*",
+		"symfony/console": "^2.5",
 		"leafo/scssphp": "0.3.*",
 		"katzgrau/klogger": "1.0.*",
 		"matthiasmullie/minify": "1.3.*",
