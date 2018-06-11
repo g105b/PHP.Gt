@@ -367,12 +367,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/PhpGt/Config.git",
-                "reference": "41d32be5a626f74465adba9614155bf24f240ec3"
+                "reference": "cd4e1a5a6b38669488a68d739745a828d061a964"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PhpGt/Config/zipball/41d32be5a626f74465adba9614155bf24f240ec3",
-                "reference": "41d32be5a626f74465adba9614155bf24f240ec3",
+                "url": "https://api.github.com/repos/PhpGt/Config/zipball/cd4e1a5a6b38669488a68d739745a828d061a964",
+                "reference": "cd4e1a5a6b38669488a68d739745a828d061a964",
                 "shasum": ""
             },
             "require": {
@@ -402,7 +402,7 @@
                 }
             ],
             "description": "Load configuration from ini files or environment variables.",
-            "time": "2018-06-11T08:11:34+00:00"
+            "time": "2018-06-11T09:15:22+00:00"
         },
         {
             "name": "psr/log",
@@ -1840,16 +1840,16 @@
         },
         {
             "name": "phpunit/php-file-iterator",
-            "version": "2.0.0",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-file-iterator.git",
-                "reference": "e20525b0c2945c7c317fff95660698cb3d2a53bc"
+                "reference": "cecbc684605bb0cc288828eb5d65d93d5c676d3c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-file-iterator/zipball/e20525b0c2945c7c317fff95660698cb3d2a53bc",
-                "reference": "e20525b0c2945c7c317fff95660698cb3d2a53bc",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-file-iterator/zipball/cecbc684605bb0cc288828eb5d65d93d5c676d3c",
+                "reference": "cecbc684605bb0cc288828eb5d65d93d5c676d3c",
                 "shasum": ""
             },
             "require": {
@@ -1883,7 +1883,7 @@
                 "filesystem",
                 "iterator"
             ],
-            "time": "2018-05-28T12:13:49+00:00"
+            "time": "2018-06-11T11:44:00+00:00"
         },
         {
             "name": "phpunit/php-text-template",
