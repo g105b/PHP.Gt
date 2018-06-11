@@ -9,6 +9,9 @@
  */
 namespace Gt\Core;
 
+use Gt\Config\Config as v3Config;
+use Gt\Config\ConfigFactory;
+
 class Config implements \ArrayAccess {
 
 const DEFAULT_CONFIG_FILE = "default.ini";
@@ -16,46 +19,25 @@ private $configArray = [];
 
 public function __construct($defaultConfigArray = null) {
 	$configPath = Path::get(Path::ROOT) . "/config.ini";
-	if(is_null($defaultConfigArray)) {
-		$defaultConfigPath =
-			Path::get(Path::GTROOT)
-			. "/"
-			. self::DEFAULT_CONFIG_FILE;
-		$defaultConfigArray = parse_ini_file($defaultConfigPath, true);
-	}
-
-	$config = [];
-	if(file_exists($configPath)) {
-		$config = parse_ini_file($configPath, true);
-	}
-	$this->configArray = array_replace_recursive(
-		$defaultConfigArray,
-		$config
-	);
-
-	// Ensure lowercase configuration keys:
-	foreach ($this->configArray as $key => $config) {
-		$lcKey = strtolower($key);
-		$this->configArray[$lcKey] = array_merge(
-			$config, $this->configArray[$lcKey]);
-		if($lcKey !== $key) {
-			unset($this->configArray[$key]);
-		}
-	}
+	$defaultConfigPath = Path::get(Path::GTROOT) . "/" . self::DEFAULT_CONFIG_FILE;
+	$defaultConfig = ConfigFactory::createFromPathName($defaultConfigPath);
+	$this->v3Config = ConfigFactory::createFromPathName($configPath);
+	$this->v3Config->merge($defaultConfig);
 }
 
 public function offsetExists($offset) {
-	return isset($this->configArray[$offset]);
+	$section = $this->v3Config->getSection($offset) ?? null;
+	return !is_null($section);
 }
 
 public function offsetGet($offset) {
 	$obj = new ConfigObj();
 	$obj->setName($offset);
 
-	if(isset($this->configArray[$offset])) {
-		foreach ($this->configArray[$offset] as $key => $value) {
-			$obj->$key = $value;
-		}
+	$section = $this->v3Config->getSection($offset) ?? [];
+
+	foreach($section as $key => $value) {
+		$obj->$key = $value;
 	}
 
 	return $obj;
