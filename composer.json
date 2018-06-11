@@ -1,5 +1,5 @@
 {
-	"name": "brightflair/php.gt",
+	"name": "phpgt/webengine",
 
 	"description": "Web application development as it's meant to be.",
 
@@ -27,7 +27,8 @@
 		"katzgrau/klogger": "1.0.*",
 		"matthiasmullie/minify": "1.3.*",
 		"michelf/php-markdown": "1.4.1",
-		"g105b/phpcsv": "1.*"
+		"g105b/phpcsv": "1.*",
+		"phpgt/config": "dev-master"
 	},
 	"require-dev": {
 		"satooshi/php-coveralls": "@stable",
