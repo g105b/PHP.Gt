@@ -367,12 +367,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/PhpGt/Config.git",
-                "reference": "177e823a98bc3b4b588d6e474d1eb19bd3d90195"
+                "reference": "60f4f1dca1442b3ce1cfb0db08b22129f5a5ddf4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PhpGt/Config/zipball/177e823a98bc3b4b588d6e474d1eb19bd3d90195",
-                "reference": "177e823a98bc3b4b588d6e474d1eb19bd3d90195",
+                "url": "https://api.github.com/repos/PhpGt/Config/zipball/60f4f1dca1442b3ce1cfb0db08b22129f5a5ddf4",
+                "reference": "60f4f1dca1442b3ce1cfb0db08b22129f5a5ddf4",
                 "shasum": ""
             },
             "require": {
@@ -402,7 +402,7 @@
                 }
             ],
             "description": "Load configuration from ini files or environment variables.",
-            "time": "2018-06-13T11:18:15+00:00"
+            "time": "2018-06-15T16:52:01+00:00"
         },
         {
             "name": "psr/log",
