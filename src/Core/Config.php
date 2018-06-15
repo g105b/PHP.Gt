@@ -16,13 +16,14 @@ class Config implements \ArrayAccess {
 
 const DEFAULT_CONFIG_FILE = "default.ini";
 private $configArray = [];
+/** @var v3Config */
+private $v3Config;
 
 public function __construct($defaultConfigArray = null) {
-	$configPath = Path::get(Path::ROOT) . "/config.ini";
-	$defaultConfigPath = Path::get(Path::GTROOT) . "/" . self::DEFAULT_CONFIG_FILE;
-	$defaultConfig = ConfigFactory::createFromPathName($defaultConfigPath);
-	$this->v3Config = ConfigFactory::createFromPathName($configPath);
-	$this->v3Config->merge($defaultConfig);
+	$this->v3Config = ConfigFactory::createForProject(
+		Path::get(Path::ROOT),
+		Path::get(Path::GTROOT) . "/" . self::DEFAULT_CONFIG_FILE
+	);
 }
 
 public function offsetExists($offset) {
