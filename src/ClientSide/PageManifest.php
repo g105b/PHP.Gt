@@ -71,6 +71,10 @@ public function generatePathDetails() {
 		if(strpos($source, "/asset") === 0) {
 			unset($this->nodeList->nodeArray[$i]);
 		}
+		
+		if(strstr($source, "://")) {
+			unset($this->nodeList->nodeArray[$i]);
+		}
 	}
 	$this->nodeList->nodeArray = array_values($this->nodeList->nodeArray);
 
