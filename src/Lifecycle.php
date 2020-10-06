@@ -9,6 +9,7 @@ use Gt\Csrf\SessionTokenStore;
 use Gt\Csrf\TokenStore;
 use Gt\Database\Connection\Settings;
 use Gt\Database\Database;
+use Gt\Database\PhpQueryAutoloader;
 use Gt\Http\Header\Headers;
 use Gt\Http\Response;
 use Gt\Http\ResponseStatusException\AbstractResponseStatusException;
@@ -92,11 +93,12 @@ class Lifecycle implements MiddlewareInterface {
 			$config->get("database.password")
 		);
 		$database = new Database($databaseSettings);
+		$database->setAppNamespace($config->get("app.namespace"));
 
 		$this->protectGlobals();
 		$this->attachAutoloaders(
 			$server->getDocumentRoot(),
-			$config->getSection("app")
+			$config
 		);
 
 		$request = $this->createServerRequest(
@@ -202,14 +204,22 @@ class Lifecycle implements MiddlewareInterface {
 		);
 	}
 
-	public function attachAutoloaders(string $documentRoot, ConfigSection $config) {
+	public function attachAutoloaders(string $documentRoot, Config $config) {
 		$logicAutoloader = new Autoloader(
-			$config["namespace"],
+			$config->get("app.namespace"),
 			$documentRoot
+		);
+		$queryAutoloader = new PhpQueryAutoloader(
+			$config->get("app.namespace"),
+			$config->get("database.query_directory")
 		);
 
 		spl_autoload_register(
 			[$logicAutoloader, "autoload"],
+			true
+		);
+		spl_autoload_register(
+			[$queryAutoloader, "autoload"],
 			true
 		);
 	}
